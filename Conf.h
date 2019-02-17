@@ -63,6 +63,7 @@ public:
   // The DMR Id section
   std::string  getDMRIdLookupFile() const;
   unsigned int getDMRIdLookupTime() const;
+  bool         getLogUTC() const;
 
   // The NXDN Id section
   std::string  getNXDNIdLookupFile() const;
@@ -300,6 +301,8 @@ private:
   unsigned int m_logFileLevel;
   std::string  m_logFilePath;
   std::string  m_logFileRoot;
+  bool         m_logUTC;
+
 
   bool         m_cwIdEnabled;
   unsigned int m_cwIdTime;

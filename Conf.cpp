@@ -399,6 +399,8 @@ bool CConf::read()
 			m_logFilePath = value;
 		else if (::strcmp(key, "FileRoot") == 0)
 			m_logFileRoot = value;
+		else if (::strcmp(key, "UTC") == 0)
+			  m_logUTC = ::atoi(value) == 1;
 		else if (::strcmp(key, "FileLevel") == 0)
 			m_logFileLevel = (unsigned int)::atoi(value);
 		else if (::strcmp(key, "DisplayLevel") == 0)
@@ -924,6 +926,11 @@ std::string CConf::getLogFilePath() const
 std::string CConf::getLogFileRoot() const
 {
 	return m_logFileRoot;
+}
+
+bool CConf::getLogUTC() const
+{
+  return m_logUTC;
 }
 
 bool CConf::getCWIdEnabled() const
