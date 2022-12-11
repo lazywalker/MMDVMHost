@@ -398,20 +398,6 @@ void CDisplay::writeDStarBERInt(float ber)
 {
 }
 
-int CDisplay::writeDMRIntEx(unsigned int slotNo, const class CUserDBentry& src, bool group, const std::string& dst, const char* type)
-{
-	/*
-	 * return value:
-	 *	< 0	error condition (i.e. not supported)
-	 *		-> call writeXXXXInt() to display
-	 *	= 0	no error, writeXXXXIntEx() displayed whole status
-	 *	= 1	no error, writeXXXXIntEx() displayed partial status
-	 *		-> call writeXXXXInt() to display remain part
-	 *	> 1	reserved for future use
-	 */
-	return -1;	// not supported
-}
-
 void CDisplay::writeDMRRSSIInt(unsigned int slotNo, unsigned char rssi)
 {
 }
@@ -447,13 +433,6 @@ void CDisplay::writeNXDNRSSIInt(unsigned char rssi)
 void CDisplay::writeNXDNBERInt(float ber)
 {
 }
-
-int CDisplay::writeNXDNIntEx(const class CUserDBentry& source, bool group, unsigned int dest, const char* type)
-{
-	/* return value definition is same as writeDMRIntEx() */
-	return -1;	// not supported
-}
-
 	
 /* Factory method extracted from MMDVMHost.cpp - BG5HHP */
 CDisplay* CDisplay::createDisplay(const CConf& conf, CUMP* ump, CModem* modem)
