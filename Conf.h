@@ -90,7 +90,6 @@ public:
   float        getModemP25TXLevel() const;
   float        getModemNXDNTXLevel() const;
   float        getModemPOCSAGTXLevel() const;
-  float        getModemFMTXLevel() const;
   std::string  getModemRSSIMappingFile() const;
   bool         getModemUseCOSAsLockout() const;
   bool         getModemTrace() const;
@@ -169,39 +168,6 @@ public:
   // The POCSAG section
   bool         getPOCSAGEnabled() const;
   unsigned int getPOCSAGFrequency() const;
-
-  // The FM Section
-  bool         getFMEnabled() const;
-  std::string  getFMCallsign() const;
-  unsigned int getFMCallsignSpeed() const;
-  unsigned int getFMCallsignFrequency() const;
-  unsigned int getFMCallsignTime() const;
-  unsigned int getFMCallsignHoldoff() const;
-  float        getFMCallsignHighLevel() const;
-  float        getFMCallsignLowLevel() const;
-  bool         getFMCallsignAtStart() const;
-  bool         getFMCallsignAtEnd() const;
-  bool         getFMCallsignAtLatch() const;
-  std::string  getFMRFAck() const;
-  std::string  getFMExtAck() const;
-  unsigned int getFMAckSpeed() const;
-  unsigned int getFMAckFrequency() const;
-  unsigned int getFMAckMinTime() const;
-  unsigned int getFMAckDelay() const;
-  float        getFMAckLevel() const;
-  unsigned int getFMTimeout() const;
-  float        getFMTimeoutLevel() const;
-  float        getFMCTCSSFrequency() const;
-  unsigned int getFMCTCSSHighThreshold() const;
-  unsigned int getFMCTCSSLowThreshold() const;
-  float        getFMCTCSSLevel() const;
-  unsigned int getFMKerchunkTime() const;
-  unsigned int getFMHangTime() const;
-  unsigned int getFMAccessMode() const;
-  bool         getFMCOSInvert() const;
-  unsigned int getFMRFAudioBoost() const;
-  float        getFMMaxDevLevel() const;
-  unsigned int getFMExtAudioBoost() const;
 
   // The D-Star Network section
   bool         getDStarNetworkEnabled() const;
@@ -369,7 +335,6 @@ private:
   float        m_modemP25TXLevel;
   float        m_modemNXDNTXLevel;
   float        m_modemPOCSAGTXLevel;
-  float        m_modemFMTXLevel;
   std::string  m_modemRSSIMappingFile;
   bool         m_modemUseCOSAsLockout;
   bool         m_modemTrace;
@@ -440,38 +405,6 @@ private:
 
   bool         m_pocsagEnabled;
   unsigned int m_pocsagFrequency;
-
-  bool         m_fmEnabled;
-  std::string  m_fmCallsign;
-  unsigned int m_fmCallsignSpeed;
-  unsigned int m_fmCallsignFrequency;
-  unsigned int m_fmCallsignTime;
-  unsigned int m_fmCallsignHoldoff;
-  float        m_fmCallsignHighLevel;
-  float        m_fmCallsignLowLevel;
-  bool         m_fmCallsignAtStart;
-  bool         m_fmCallsignAtEnd;
-  bool         m_fmCallsignAtLatch;
-  std::string  m_fmRFAck;
-  std::string  m_fmExtAck;
-  unsigned int m_fmAckSpeed;
-  unsigned int m_fmAckFrequency;
-  unsigned int m_fmAckMinTime;
-  unsigned int m_fmAckDelay;
-  float        m_fmAckLevel;
-  unsigned int m_fmTimeout;
-  float        m_fmTimeoutLevel;
-  float        m_fmCTCSSFrequency;
-  unsigned int m_fmCTCSSHighThreshold;
-  unsigned int m_fmCTCSSLowThreshold;
-  float        m_fmCTCSSLevel;
-  unsigned int m_fmKerchunkTime;
-  unsigned int m_fmHangTime;
-  unsigned int m_fmAccessMode;
-  bool         m_fmCOSInvert;
-  unsigned int m_fmRFAudioBoost;
-  float        m_fmMaxDevLevel;
-  unsigned int m_fmExtAudioBoost;
 
   bool         m_dstarNetworkEnabled;
   std::string  m_dstarGatewayAddress;
