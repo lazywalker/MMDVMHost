@@ -20,9 +20,10 @@
 #define	DMRLookup_H
 
 #include "Thread.h"
-#include "UserDB.h"
+#include "Mutex.h"
 
 #include <string>
+#include <unordered_map>
 
 class CDMRLookup : public CThread {
 public:
@@ -34,17 +35,20 @@ public:
 	virtual void entry();
 
 	std::string find(unsigned int id);
-	void findWithName(unsigned int id, class CUserDBentry *entry);
+	std::string findWithName(unsigned int id);
 
 	bool exists(unsigned int id);
 
 	void stop();
 
 private:
-	std::string     m_filename;
-	unsigned int    m_reloadTime;
-	class CUserDB   m_table;
-	bool            m_stop;
+	std::string                                   m_filename;
+	unsigned int                                  m_reloadTime;
+	std::unordered_map<unsigned int, std::string> m_table;
+	CMutex                                        m_mutex;
+	bool                                          m_stop;
+
+	bool load();
 };
 
 #endif
