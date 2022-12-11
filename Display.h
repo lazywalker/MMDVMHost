@@ -42,7 +42,6 @@ public:
 	void setLockout();
 	void setError(const char* text);
 	void setQuit();
-	void setFM();
 
 	void writeDStar(const char* my1, const char* my2, const char* your, const char* type, const char* reflector);
 	void writeDStarRSSI(unsigned char rssi);
@@ -88,7 +87,6 @@ protected:
 	virtual void setLockoutInt() = 0;
 	virtual void setErrorInt(const char* text) = 0;
 	virtual void setQuitInt() = 0;
-	virtual void setFMInt() = 0;
 
 	virtual void writeDStarInt(const char* my1, const char* my2, const char* your, const char* type, const char* reflector) = 0;
 	virtual void writeDStarRSSIInt(unsigned char rssi);

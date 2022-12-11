@@ -93,7 +93,6 @@ private:
   bool            m_p25Enabled;
   bool            m_nxdnEnabled;
   bool            m_pocsagEnabled;
-  bool            m_fmEnabled;
   unsigned int    m_cwIdTime;
   CDMRLookup*     m_dmrLookup;
   CNXDNLookup*    m_nxdnLookup;

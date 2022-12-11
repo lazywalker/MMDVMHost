@@ -161,22 +161,6 @@ void CTFTSerial::setQuitInt()
 	m_mode = MODE_QUIT;
 }
 
-void CTFTSerial::setFMInt()
-{
-	// Clear the screen
-	clearScreen();
-
-	setFontSize(FONT_LARGE);
-
-	// Draw MMDVM logo
-	displayBitmap(0U, 0U, "MMDVM_sm.bmp");
-
-	gotoPosPixel(20U, 60U);
-	displayText("FM");
-
-	m_mode = MODE_FM;
-}
-
 void CTFTSerial::writeDStarInt(const char* my1, const char* my2, const char* your, const char* type, const char* reflector)
 {
 	assert(my1 != NULL);
