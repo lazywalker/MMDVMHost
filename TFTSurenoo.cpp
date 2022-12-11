@@ -238,25 +238,6 @@ void CTFTSurenoo::writeDMRInt(unsigned int slotNo, const std::string& src, bool 
 	m_mode = MODE_DMR;
 }
 
-int CTFTSurenoo::writeDMRIntEx(unsigned int slotNo, const class CUserDBentry& src, bool group, const std::string& dst, const char* type)
-{
-	assert(type != NULL);
-
-	// duplex mode is not supported
-	if (m_duplex)
-		return -1;
-
-	setModeLine(STR_DMR);
-	setStatusLine(statusLineNo(2), (src.get(keyFIRST_NAME) + " " + src.get(keyLAST_NAME)).c_str());
-	setStatusLine(statusLineNo(3), src.get(keyCITY).c_str());
-	setStatusLine(statusLineNo(4), src.get(keySTATE).c_str());
-	setStatusLine(statusLineNo(5), src.get(keyCOUNTRY).c_str());
-
-	m_mode = MODE_DMR;
-
-	return 1;
-}
-
 void CTFTSurenoo::clearDMRInt(unsigned int slotNo)
 {
 	int pos = m_duplex ? (slotNo - 1) : 0;
@@ -336,21 +317,6 @@ void CTFTSurenoo::writeNXDNInt(const char* source, bool group, unsigned int dest
 	setStatusLine(statusLineNo(1), m_temp);
 
 	m_mode = MODE_NXDN;
-}
-
-int CTFTSurenoo::writeNXDNIntEx(const class CUserDBentry& source, bool group, unsigned int dest, const char* type)
-{
-	assert(type != NULL);
-
-	setModeLine(STR_NXDN);
-	setStatusLine(statusLineNo(2), (source.get(keyFIRST_NAME) + " " + source.get(keyLAST_NAME)).c_str());
-	setStatusLine(statusLineNo(3), source.get(keyCITY).c_str());
-	setStatusLine(statusLineNo(4), source.get(keySTATE).c_str());
-	setStatusLine(statusLineNo(5), source.get(keyCOUNTRY).c_str());
-
-	m_mode = MODE_NXDN;
-
-	return 1;
 }
 
 void CTFTSurenoo::clearNXDNInt()

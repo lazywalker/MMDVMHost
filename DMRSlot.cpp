@@ -1108,8 +1108,7 @@ void CDMRSlot::writeNetwork(const CDMRData& dmrData)
 		setShortLC(m_slotNo, dstId, flco, ACTIVITY_VOICE);
 		std::string src = m_lookup->find(srcId);
 		std::string dst = m_lookup->find(dstId);
-		class CUserDBentry cn;
-		m_lookup->findWithName(srcId, &cn);
+		std::string cn = m_lookup->findWithName(srcId);
 		m_display->writeDMR(m_slotNo, cn, flco == FLCO_GROUP, dst, "N");
 
 #if defined(DUMP_DMR)
@@ -1178,8 +1177,7 @@ void CDMRSlot::writeNetwork(const CDMRData& dmrData)
 			setShortLC(m_slotNo, dstId, m_netLC->getFLCO(), ACTIVITY_VOICE);
 			std::string src = m_lookup->find(srcId);
 			std::string dst = m_lookup->find(dstId);
-			class CUserDBentry cn;
-			m_lookup->findWithName(srcId, &cn);
+			std::string cn = m_lookup->findWithName(srcId);
 
 			m_display->writeDMR(m_slotNo, cn, m_netLC->getFLCO() == FLCO_GROUP, dst, "N");
 
@@ -1375,8 +1373,7 @@ void CDMRSlot::writeNetwork(const CDMRData& dmrData)
 	
 			std::string src = m_lookup->find(srcId);
 			std::string dst = m_lookup->find(dstId);
-			class CUserDBentry cn;
-			m_lookup->findWithName(srcId, &cn);
+			std::string cn = m_lookup->findWithName(srcId);
 
 			m_display->writeDMR(m_slotNo, cn, m_netLC->getFLCO() == FLCO_GROUP, dst, "N");
 

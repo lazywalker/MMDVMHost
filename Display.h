@@ -20,7 +20,6 @@
 #define	DISPLAY_H
 
 #include "Timer.h"
-#include "UserDBentry.h"
 
 #include <string>
 

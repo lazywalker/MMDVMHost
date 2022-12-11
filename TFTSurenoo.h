@@ -23,7 +23,6 @@
 #include "Display.h"
 #include "Defines.h"
 #include "SerialPort.h"
-#include "UserDBentry.h"
 
 #include <string>
 
@@ -48,7 +47,6 @@ protected:
 	virtual void clearDStarInt();
 
 	virtual void writeDMRInt(unsigned int slotNo, const std::string& src, bool group, const std::string& dst, const char* type);
-	virtual int writeDMRIntEx(unsigned int slotNo, const class CUserDBentry& src, bool group, const std::string& dst, const char* type);
 	virtual void clearDMRInt(unsigned int slotNo);
 
 	virtual void writeFusionInt(const char* source, const char* dest, unsigned char dgid, const char* type, const char* origin);
@@ -58,7 +56,6 @@ protected:
 	virtual void clearP25Int();
 
 	virtual void writeNXDNInt(const char* source, bool group, unsigned int dest, const char* type);
-	virtual int writeNXDNIntEx(const class CUserDBentry& source, bool group, unsigned int dest, const char* type);
 	virtual void clearNXDNInt();
 
 	virtual void writePOCSAGInt(uint32_t ric, const std::string& message);
