@@ -21,8 +21,6 @@
 #include "SerialController.h"
 #include "ModemSerialPort.h"
 #include "NullDisplay.h"
-#include "TFTSerial.h"
-#include "TFTSurenoo.h"
 #include "LCDproc.h"
 #include "Nextion.h"
 #include "CASTInfo.h"
@@ -434,24 +432,7 @@ CDisplay* CDisplay::createDisplay(const CConf& conf, CUMP* ump, CModem* modem)
 	LogInfo("Display Parameters");
 	LogInfo("    Type: %s", type.c_str());
 
-	if (type == "TFT Serial" || type == "TFT Surenoo") {
-		std::string port        = conf.getTFTSerialPort();
-		unsigned int brightness = conf.getTFTSerialBrightness();
-
-		LogInfo("    Port: %s", port.c_str());
-		LogInfo("    Brightness: %u", brightness);
-
-		ISerialPort* serial = NULL;
-		if (port == "modem")
-			serial = new CModemSerialPort(modem);
-		else
-			serial = new CSerialController(port, (type == "TFT Serial") ? SERIAL_9600 : SERIAL_115200);
-
-		if (type == "TFT Surenoo")
-			display = new CTFTSurenoo(conf.getCallsign(), dmrid, serial, brightness, conf.getDuplex());
-		else
-			display = new CTFTSerial(conf.getCallsign(), dmrid, serial, brightness);
-	} else if (type == "Nextion") {
+	if (type == "Nextion") {
 		std::string port            = conf.getNextionPort();
 		unsigned int brightness     = conf.getNextionBrightness();
 		bool displayClock           = conf.getNextionDisplayClock();

@@ -83,9 +83,6 @@
     <ClInclude Include="StopWatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TFTSerial.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -287,9 +284,6 @@
     <ClInclude Include="CASTInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TFTSurenoo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NXDNIcomNetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -359,9 +353,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StopWatch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TFTSerial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
@@ -548,9 +539,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CASTInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TFTSurenoo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NXDNIcomNetwork.cpp">
