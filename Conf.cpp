@@ -50,7 +50,6 @@ enum SECTION {
   SECTION_P25_NETWORK,
   SECTION_NXDN_NETWORK,
   SECTION_POCSAG_NETWORK,
-  SECTION_TFTSERIAL,
   SECTION_HD44780,
   SECTION_NEXTION,
   SECTION_OLED,
@@ -216,18 +215,6 @@ m_pocsagLocalAddress(),
 m_pocsagLocalPort(0U),
 m_pocsagNetworkModeHang(3U),
 m_pocsagNetworkDebug(false),
-m_tftSerialPort("/dev/ttyAMA0"),
-m_tftSerialBrightness(50U),
-m_hd44780Rows(2U),
-m_hd44780Columns(16U),
-m_hd44780Pins(),
-m_hd44780i2cAddress(),
-m_hd44780PWM(false),
-m_hd44780PWMPin(),
-m_hd44780PWMBright(),
-m_hd44780PWMDim(),
-m_hd44780DisplayClock(false),
-m_hd44780UTC(false),
 m_nextionPort("/dev/ttyAMA0"),
 m_nextionBrightness(50U),
 m_nextionDisplayClock(false),
@@ -319,10 +306,6 @@ bool CConf::read()
 		  section = SECTION_NXDN_NETWORK;
 	  else if (::strncmp(buffer, "[POCSAG Network]", 16U) == 0)
 		  section = SECTION_POCSAG_NETWORK;
-	  else if (::strncmp(buffer, "[TFT Serial]", 12U) == 0)
-		  section = SECTION_TFTSERIAL;
-	  else if (::strncmp(buffer, "[HD44780]", 9U) == 0)
-		  section = SECTION_HD44780;
 	  else if (::strncmp(buffer, "[Nextion]", 9U) == 0)
 		  section = SECTION_NEXTION;
 	  else if (::strncmp(buffer, "[OLED]", 6U) == 0)
@@ -770,38 +753,6 @@ bool CConf::read()
 			m_pocsagNetworkModeHang = (unsigned int)::atoi(value);
 		else if (::strcmp(key, "Debug") == 0)
 			m_pocsagNetworkDebug = ::atoi(value) == 1;
-	} else if (section == SECTION_TFTSERIAL) {
-		if (::strcmp(key, "Port") == 0)
-			m_tftSerialPort = value;
-		else if (::strcmp(key, "Brightness") == 0)
-			m_tftSerialBrightness = (unsigned int)::atoi(value);
-	} else if (section == SECTION_HD44780) {
-		if (::strcmp(key, "Rows") == 0)
-			m_hd44780Rows = (unsigned int)::atoi(value);
-		else if (::strcmp(key, "Columns") == 0)
-			m_hd44780Columns = (unsigned int)::atoi(value);
-		else if (::strcmp(key, "I2CAddress") == 0)
-			m_hd44780i2cAddress = (unsigned int)::strtoul(value, NULL, 16);
-		else if (::strcmp(key, "PWM") == 0)
-			m_hd44780PWM = ::atoi(value) == 1;
-		else if (::strcmp(key, "PWMPin") == 0)
-			m_hd44780PWMPin = (unsigned int)::atoi(value);
-		else if (::strcmp(key, "PWMBright") == 0)
-			m_hd44780PWMBright = (unsigned int)::atoi(value);
-		else if (::strcmp(key, "PWMDim") == 0)
-			m_hd44780PWMDim = (unsigned int)::atoi(value);
-		else if (::strcmp(key, "DisplayClock") == 0)
-			m_hd44780DisplayClock = ::atoi(value) == 1;
-		else if (::strcmp(key, "UTC") == 0)
-			m_hd44780UTC = ::atoi(value) == 1;
-		else if (::strcmp(key, "Pins") == 0) {
-			char* p = ::strtok(value, ",\r\n");
-			while (p != NULL) {
-				unsigned int pin = (unsigned int)::atoi(p);
-				m_hd44780Pins.push_back(pin);
-				p = ::strtok(NULL, ",\r\n");
-			}
-		}
 	} else if (section == SECTION_NEXTION) {
 		if (::strcmp(key, "Port") == 0)
 			m_nextionPort = value;
@@ -1636,66 +1587,6 @@ unsigned int CConf::getPOCSAGNetworkModeHang() const
 bool CConf::getPOCSAGNetworkDebug() const
 {
 	return m_pocsagNetworkDebug;
-}
-
-std::string CConf::getTFTSerialPort() const
-{
-	return m_tftSerialPort;
-}
-
-unsigned int CConf::getTFTSerialBrightness() const
-{
-	return m_tftSerialBrightness;
-}
-
-unsigned int CConf::getHD44780Rows() const
-{
-	return m_hd44780Rows;
-}
-
-unsigned int CConf::getHD44780Columns() const
-{
-	return m_hd44780Columns;
-}
-
-std::vector<unsigned int> CConf::getHD44780Pins() const
-{
-	return m_hd44780Pins;
-}
-
-unsigned int CConf::getHD44780i2cAddress() const
-{
-  return m_hd44780i2cAddress;
-}
-
-bool CConf::getHD44780PWM() const
-{
-	return m_hd44780PWM;
-}
-
-unsigned int CConf::getHD44780PWMPin() const
-{
-	return m_hd44780PWMPin;
-}
-
-unsigned int CConf::getHD44780PWMBright() const
-{
-	return m_hd44780PWMBright;
-}
-
-unsigned int CConf::getHD44780PWMDim() const
-{
-	return m_hd44780PWMDim;
-}
-
-bool CConf::getHD44780DisplayClock() const
-{
-	return m_hd44780DisplayClock;
-}
-
-bool CConf::getHD44780UTC() const
-{
-	return m_hd44780UTC;
 }
 
 std::string CConf::getNextionPort() const

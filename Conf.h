@@ -226,22 +226,6 @@ public:
   unsigned int getPOCSAGNetworkModeHang() const;
   bool         getPOCSAGNetworkDebug() const;
 
-  // The TFTSERIAL section
-  std::string  getTFTSerialPort() const;
-  unsigned int getTFTSerialBrightness() const;
-
-  // The HD44780 section
-  unsigned int getHD44780Rows() const;
-  unsigned int getHD44780Columns() const;
-  std::vector<unsigned int> getHD44780Pins() const;
-  unsigned int getHD44780i2cAddress() const;
-  bool         getHD44780PWM() const;
-  unsigned int getHD44780PWMPin() const;
-  unsigned int getHD44780PWMBright() const;
-  unsigned int getHD44780PWMDim() const;
-  bool         getHD44780DisplayClock() const;
-  bool         getHD44780UTC() const;
-
   // The Nextion section
   std::string  getNextionPort() const;
   unsigned int getNextionBrightness() const;
@@ -456,20 +440,6 @@ private:
   unsigned int m_pocsagLocalPort;
   unsigned int m_pocsagNetworkModeHang;
   bool         m_pocsagNetworkDebug;
-
-  std::string  m_tftSerialPort;
-  unsigned int m_tftSerialBrightness;
-
-  unsigned int m_hd44780Rows;
-  unsigned int m_hd44780Columns;
-  std::vector<unsigned int> m_hd44780Pins;
-  unsigned int m_hd44780i2cAddress;
-  bool         m_hd44780PWM;
-  unsigned int m_hd44780PWMPin;
-  unsigned int m_hd44780PWMBright;
-  unsigned int m_hd44780PWMDim;
-  bool         m_hd44780DisplayClock;
-  bool         m_hd44780UTC;
 
   std::string  m_nextionPort;
   unsigned int m_nextionBrightness;
