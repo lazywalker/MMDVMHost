@@ -189,6 +189,7 @@ public:
 	bool         getP25SelfOnly() const;
 	bool         getP25OverrideUID() const;
 	bool         getP25RemoteGateway() const;
+	bool         getP25SoftId() const;
 	unsigned int getP25TXHang() const;
 	unsigned int getP25ModeHang() const;
 #endif
@@ -481,6 +482,7 @@ private:
 	bool         m_p25SelfOnly;
 	bool         m_p25OverrideUID;
 	bool         m_p25RemoteGateway;
+	bool         m_p25SoftId;
 	unsigned int m_p25TXHang;
 #endif
 	unsigned int m_p25ModeHang;

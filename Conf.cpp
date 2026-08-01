@@ -216,6 +216,7 @@ m_p25NAC(0x293U),
 m_p25SelfOnly(false),
 m_p25OverrideUID(false),
 m_p25RemoteGateway(false),
+m_p25SoftId(false),
 m_p25TXHang(5U),
 #endif
 m_p25ModeHang(10U),
@@ -836,6 +837,8 @@ bool CConf::read()
 				m_p25SelfOnly = ::atoi(value) == 1;
 			else if (::strcmp(key, "RemoteGateway") == 0)
 				m_p25RemoteGateway = ::atoi(value) == 1;
+			else if (::strcmp(key, "SoftId") == 0)
+				m_p25SoftId = ::atoi(value) == 1;
 			else if (::strcmp(key, "TXHang") == 0)
 				m_p25TXHang = (unsigned int)::atoi(value);
 			else if (::strcmp(key, "ModeHang") == 0)
@@ -1664,6 +1667,11 @@ bool CConf::getP25SelfOnly() const
 bool CConf::getP25RemoteGateway() const
 {
 	return m_p25RemoteGateway;
+}
+
+bool CConf::getP25SoftId() const
+{
+	return m_p25SoftId;
 }
 
 unsigned int CConf::getP25TXHang() const
