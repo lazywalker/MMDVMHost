@@ -760,6 +760,7 @@ int CMMDVMHost::run()
 		bool uidOverride    = m_conf.getP25OverrideUID();
 		bool selfOnly       = m_conf.getP25SelfOnly();
 		bool remoteGateway  = m_conf.getP25RemoteGateway();
+		bool softId         = m_conf.getP25SoftId();
 		m_p25RFModeHang     = m_conf.getP25ModeHang();
 
 		LogInfo("P25 RF Parameters");
@@ -768,10 +769,11 @@ int CMMDVMHost::run()
 		LogInfo("    UID Override: %s", uidOverride ? "yes" : "no");
 		LogInfo("    Self Only: %s", selfOnly ? "yes" : "no");
 		LogInfo("    Remote Gateway: %s", remoteGateway ? "yes" : "no");
+		LogInfo("    Soft ID: %s", softId ? "yes" : "no");
 		LogInfo("    TX Hang: %us", txHang);
 		LogInfo("    Mode Hang: %us", m_p25RFModeHang);
 
-		m_p25 = new CP25Control(nac, id, selfOnly, uidOverride, m_p25Network, m_timeout, m_duplex, m_dmrLookup, remoteGateway, rssi);
+		m_p25 = new CP25Control(nac, id, selfOnly, uidOverride, m_p25Network, m_timeout, m_duplex, m_dmrLookup, remoteGateway, softId, rssi);
 	}
 #endif
 
