@@ -81,7 +81,7 @@ bool CDMRTA::decodeTA()
 		t1 = 0U; t2 = 0U; c = 0U;
 		for (i = 0U; (i < 32U) && (t2 < TAsize); i++) {
 		    for (j = 7; j >= 0; j--) {
-			    c = (c << 1U) | (b[i] >> j);
+			    c = (c << 1U) | ((b[i] >> j) & 1U);
 			    if (++t1 == 7U) { 
                     if (i > 0U)
                         m_TA[t2++] = c & 0x7FU; 
@@ -96,7 +96,7 @@ bool CDMRTA::decodeTA()
 
 	case 1U:		// ISO 8 bit
 	case 2U:		// UTF8
-		::memcpy(m_TA, talkerAlias + 1U, sizeof(m_TA));
+		::memcpy(m_TA, talkerAlias + 1U, sizeof(m_TA) - 1U);
 		break;
 
 	case 3U:		// UTF16 poor man's conversion
